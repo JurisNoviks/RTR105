@@ -1,0 +1,1 @@
+Komentārus nezinu kādu pievinot, nedaudz aizvilku un darbus tagad viedoju un pabeidzu pēdejās dienās, jā nedaudz vainīgs un tas ka esmu slinks. Kopumā Lai aprēķinātu integrāļus, kodā es izmantoju taisnstūra metodi
