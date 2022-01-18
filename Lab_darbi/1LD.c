@@ -8,8 +8,8 @@ void main(){
  printf("Funkcijas (1-x)*exp(-x) aprēķināšana: \n");
  printf("Lietotājs, lūdzu, ievadi x vērtību: ");
  scanf("%Lf",&x);
- y = (1-x)*exp(-x);
- printf("(1 - %.2Lf)*exp(-%Lf) = %Lf\n",x,x,y);
+ y = exp(-x*x);
+ printf("exp(-%Lf * %Lf) = %Lf\n",x,x,y);
 
  a = (1-x)*pow(x,0)/(1);
  s += a;
