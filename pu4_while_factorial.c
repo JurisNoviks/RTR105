@@ -24,14 +24,13 @@ int main()
         
         char_rezultats = c_i = 1;//abi char ir nules kautvai ieprieks pieskrta vērtiba 1.Tapėc pieskiru vertibu velreiz
         
-        while(c_i<=char_skaitlis)
+        for(c_i;c_i<=char_skaitlis;c_i++)
         {
             test = (char_rezultats*c_i); //ja tiek ielikts pa taisno ifa tad nestrada (char sasniendz lielaku vertibu neka var)
             if(test >= char_rezultats)
             {
                 
                 char_rezultats*=c_i;
-                c_i++;
                 
             }
             else
@@ -47,12 +46,12 @@ int main()
      
      case 'i':
      scanf("%d",&int_skaitlis);
-        while(i<=int_skaitlis)
+        for(i = 1;i<=int_skaitlis;i++)
         {
             if((int_rezultats*i) >= int_rezultats)
             {
                 int_rezultats*=i;
-            i++;
+            
             }
             else
             {
@@ -67,12 +66,11 @@ int main()
      
      case 'l':
         scanf("%lld",&l_skaitlis);
-        while(l_i<=l_skaitlis)
+        for(l_i;l_i<=l_skaitlis;l_i++)
         {
             if((l_rezultats*l_i) >= l_rezultats)
             {
                 l_rezultats*=l_i;
-            l_i++;
             }
             else
             {
