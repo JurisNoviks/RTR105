@@ -2,63 +2,93 @@
 
 int main()
 {
-    char inp1, inp2, inp3, type;
-    char res_str[6] = "     ";
-
-    printf("Ievadiet 3 skailjus ");
-    scanf(" %c %c %c", &inp1, &inp2, &inp3);
-    printf("Ievadiet + vai -, lai sakartotu augoshaa vai dilstoshaa secibaa: ");
-    scanf(" %c", &type);
-
-    int dir = type == '+' ? -1 : 1, start = type == '+' ? 4 : 0;
-
-
-    if (inp1 > inp2)
-        if (inp1 > inp3)
+    char tips;
+    char test;
+   
+    
+    int int_skaitlis,int_rezultats,i;
+    int_skaitlis=int_rezultats=i = 1;
+    
+    long long l_skaitlis,l_rezultats,l_i;
+    l_skaitlis=l_rezultats=l_i = 1;
+    
+    char char_skaitlis,c_i,char_rezultats;
+    char_skaitlis=c_i=char_rezultats = 1;
+   
+    printf("Ievadiet datu tipu c=char,i=integer, l=long long \n");
+    scanf(" %c",&tips);
+    printf("Ievadiet skaitli \n");
+    switch(tips) {
+     case 'c':
+        scanf("%d",&char_skaitlis);
+        
+        char_rezultats = c_i = 1;//abi char ir nules kautvai ieprieks pieskrta vērtiba 1.Tapėc pieskiru vertibu velreiz
+        
+        while(c_i<=char_skaitlis)
         {
-            res_str[start] = inp1;
-            if (inp3 > inp2)
+            test = (char_rezultats*c_i); //ja tiek ielikts pa taisno ifa tad nestrada (char sasniendz lielaku vertibu neka var)
+            if(test >= char_rezultats)
             {
-                res_str[start + dir * 2] = inp3;
-                res_str[start + dir * 4] = inp2;
+                
+                char_rezultats*=c_i;
+                c_i++;
+                
             }
             else
             {
-                res_str[start + dir * 2] = inp2;
-                res_str[start + dir * 4] = inp3;
+                printf("Datu tips pārāk mazs priekš faktoriāla");
+                return 0;
             }
+           
+            
         }
-        else
+        printf("Faktorials no %d ir : %d",char_skaitlis,char_rezultats);
+     break;
+     
+     case 'i':
+     scanf("%d",&int_skaitlis);
+        while(i<=int_skaitlis)
         {
-            res_str[start] = inp3;
-            res_str[start + dir * 2] = inp1;
-            res_str[start + dir * 4] = inp2;
-        }
-    else
-    {
-        if (inp2 > inp3)
-        {
-            res_str[start] = inp2;
-            if (inp3 > inp1)
+            if((int_rezultats*i) >= int_rezultats)
             {
-                res_str[start + dir * 2] = inp3;
-                res_str[start + dir * 4] = inp1;
+                int_rezultats*=i;
+            i++;
             }
             else
             {
-                res_str[start + dir * 2] = inp1;
-                res_str[start + dir * 4] = inp3;
+                printf("Datu tips pārāk mazs priekš faktoriāla");
+                return 0;
             }
+           
+            
         }
-        else
+        printf("Faktorials no %d ir : %d",int_skaitlis,int_rezultats);
+     break;
+     
+     case 'l':
+        scanf("%lld",&l_skaitlis);
+        while(l_i<=l_skaitlis)
         {
-            res_str[start] = inp3;
-            res_str[start + dir * 2] = inp2;
-            res_str[start + dir * 4] = inp1;
+            if((l_rezultats*l_i) >= l_rezultats)
+            {
+                l_rezultats*=l_i;
+            l_i++;
+            }
+            else
+            {
+                printf("Datu tips pārāk mazs priekš faktoriāla");
+                return 0;
+            }
+           
+            
         }
+        printf("Faktorials no %lld ir : %lld",l_skaitlis,l_rezultats);
+     break;
+     
+     
+     
+    default:
+    printf("Nepareizs datu tips \n");
     }
-
-    printf("Rezultats: %s\n", res_str);
-
     return 0;
 }
