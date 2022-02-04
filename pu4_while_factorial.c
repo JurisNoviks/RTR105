@@ -1,79 +1,94 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-
-#define VAL_DEF_SIZE 16
-
-char type;
-
-char add_fact(void *val, int i)
-{
-    char cmp_res;
-
-    if (type == 'c')
-    {
-        char val_before = *((char *)val);
-        *((char *)val) *= i;
-        cmp_res = *((char *)val) > val_before;
-    }
-    else if (type == 'i')
-    {
-        int val_before = *((int *)val);
-        *((int *)val) *= i;
-        cmp_res = *((int *)val) > val_before;
-    }
-    else
-    {
-        long long val_before = *((long long *)val);
-        *((long long *)val) *= i;
-        cmp_res = *((long long *)val) > val_before;
-    }
-    
-    return cmp_res;
-}
 
 int main()
 {
-    int d;
-    printf("Ievadiet decimalu skaitli: ");
-    scanf(" %d", &d);
-
-    printf("Izvelties vienu datu tipu - (c - char, i - int, l - long): ");
-    scanf(" %c", &type);
-
-    if (type != 'c' && type != 'i' && type != 'l')
-    {
-        printf("Nepariezs datu tips!\n");
-        return 1;
-    }
-
-    char my_val[VAL_DEF_SIZE];
-    memset(my_val, 0, VAL_DEF_SIZE);
-    my_val[0] = 1;
-    int i = 2;
-    char last_res;
-
-    while (i <= d && (last_res = add_fact(my_val, i++)))
-        ;
+    char tips;
+    char test;
+   
     
-    if (!last_res && d > 0)
-    {
-        printf("Izveletais datu tips ir mazs!\n");
-        return 1;
+    int int_skaitlis,int_rezultats,i;
+    int_skaitlis=int_rezultats=i = 1;
+    
+    long long l_skaitlis,l_rezultats,l_i;
+    l_skaitlis=l_rezultats=l_i = 1;
+    
+    char char_skaitlis,c_i,char_rezultats;
+    char_skaitlis=c_i=char_rezultats = 1;
+   
+    printf("Ievadiet datu tipu c=char,i=integer, l=long long \n");
+    scanf(" %c",&tips);
+    printf("Ievadiet skaitli \n");
+    switch(tips) {
+     case 'c':
+        scanf("%d",&char_skaitlis);
+        
+        char_rezultats = c_i = 1;//abi char ir nules kautvai ieprieks pieskrta vērtiba 1.Tapėc pieskiru vertibu velreiz
+        
+        while(c_i<=char_skaitlis)
+        {
+            test = (char_rezultats*c_i); //ja tiek ielikts pa taisno ifa tad nestrada (char sasniendz lielaku vertibu neka var)
+            if(test >= char_rezultats)
+            {
+                
+                char_rezultats*=c_i;
+                c_i++;
+                
+            }
+            else
+            {
+                printf("Datu tips pārāk mazs priekš faktoriāla");
+                return 0;
+            }
+           
+            
+        }
+        printf("Faktorials no %d ir : %d",char_skaitlis,char_rezultats);
+     break;
+     
+     case 'i':
+     scanf("%d",&int_skaitlis);
+        while(i<=int_skaitlis)
+        {
+            if((int_rezultats*i) >= int_rezultats)
+            {
+                int_rezultats*=i;
+            i++;
+            }
+            else
+            {
+                printf("Datu tips pārāk mazs priekš faktoriāla");
+                return 0;
+            }
+           
+            
+        }
+        printf("Faktorials no %d ir : %d",int_skaitlis,int_rezultats);
+     break;
+     
+     case 'l':
+        scanf("%lld",&l_skaitlis);
+        while(l_i<=l_skaitlis)
+        {
+            if((l_rezultats*l_i) >= l_rezultats)
+            {
+                l_rezultats*=l_i;
+            l_i++;
+            }
+            else
+            {
+                printf("Datu tips pārāk mazs priekš faktoriāla");
+                return 0;
+            }
+           
+            
+        }
+        printf("Faktorials no %lld ir : %lld",l_skaitlis,l_rezultats);
+     break;
+     
+     
+     
+    default:
+    printf("Nepareizs datu tips \n");
     }
-
-    switch (type)
-    {
-        case 'c':
-            printf("Rezultats: %d\n", *((char *)my_val));
-            break;
-        case 'i':
-            printf("Rezultats: %d\n", *((int *)my_val));
-            break;
-        case 'l':
-            printf("Rezultats: %lld\n", *((long long *)my_val));
-            break;
-    }
-
     return 0;
 }
